@@ -1,10 +1,10 @@
 import React from "react";
-import "../index.css";
+import "../App.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} MyPortfolio. All Rights Reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Pankajuday.tech All Rights Reserved.</p>
     </footer>
   );
 };

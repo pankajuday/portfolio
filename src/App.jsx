@@ -6,18 +6,20 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./index.css";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <div className="App" >
       <Navbar />
-      <main>
+      <Header />
+      {/* <main>
         <About />
         <Projects />
         <Skills />
         <Contact />
       </main>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
