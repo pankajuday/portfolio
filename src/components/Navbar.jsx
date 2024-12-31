@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import img from "../assets/img.jpg";
+import logo from "../assets/logo.png";
 import three from "../assets/three.png";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
       <div className="navbar">
         <div className="navbar-logo">
-          <img src={img} alt="" />
+          <img src={logo} alt="" />
         </div>
 
         <div className="navbar-menu">
