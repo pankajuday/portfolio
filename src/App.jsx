@@ -15,10 +15,10 @@ function App() {
       {/* <BgVideo /> */}
       
       <Header />
+      <About />
+      <Skills />
+      <Projects />
       {/* <main>
-        <About />
-        <Projects />
-        <Skills />
         <Contact />
       </main>
       <Footer /> */}

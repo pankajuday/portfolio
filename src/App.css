@@ -9,10 +9,10 @@ body {
 }
 
 .navbar {
-  @apply  flex-row mt-4   h-16  w-full items-center hidden;
+  @apply  flex-row mt-4   h-16  w-full items-center hidden ;
   @apply md:flex  ;
   .navbar-logo {
-    @apply   w-[30%] justify-center flex items-center;
+    @apply   md:w-[30%] md:justify-center md:flex md:items-center block ;
       img {
         @apply h-12 w-12 rounded-full ;
       
@@ -30,7 +30,7 @@ body {
 }
 
 .header{
-  @apply h-auto w-full flex flex-col ; 
+  @apply h-fit w-full flex flex-col; 
   @apply md:flex-row md:relative md:justify-between md:mt-4 md:items-center;
  .header-img{
   @apply h-auto w-full  flex  relative ;
@@ -47,14 +47,14 @@ body {
  }
  .header-title{
   
-  @apply h-auto w-full  justify-center  items-center absolute  z-20 flex flex-col pt-80 ;
-  @apply md:justify-evenly md:relative md:pt-0;
+  @apply h-auto w-full  justify-center  items-center absolute  z-20 flex flex-col top-80  ;
+  @apply md:justify-evenly md:relative md:pt-0 md:top-0;
   h1{
     @apply font-bold cursor-text text-4xl;
     @apply md:text-6xl  ;
   }
   p{
-    @apply text-lg cursor-text text-left ml-5 mt-5 ;
+    @apply text-lg cursor-text text-left ml-5 mt-3 border-l-4 pl-2 border-[#E317FE];
   }
  }
 
@@ -69,4 +69,8 @@ body {
     }
   }
  }
+}
+
+.card{
+  @apply transition-colors delay-150 duration-500 ease-in origin-center;
 }
