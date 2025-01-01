@@ -5,8 +5,9 @@ import css from "../assets/css.png";
 const Projects = () => {
   return (
     <div>
-
-      
+      <div>
+        
+      </div>
     </div>
   );
 };

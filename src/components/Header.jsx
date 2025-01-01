@@ -32,7 +32,7 @@ export const Header = () => {
             <p>Crafting seamless digital solutions that bring ideas to life.</p>
             <a
               href=""
-              className="h-auto w-full justify-end relative items-center flex flex-col flex-wrap left-20 top-5"
+              className="h-auto w-full  relative md:items-center flex flex-col flex-wrap md:left-20 top-5"
             >
               <button className="h-10 w-24 text-gray-950 font-bold hover:bg-yellow-500 bg-[#F71850] realtive rounded-lg p-2 border-2 border-[#E317FE]">
                 Contact Me
@@ -41,6 +41,7 @@ export const Header = () => {
           </div>
 
           <div className="social-media">
+              <h3 className="text-xl mb-3">Find Me On</h3>
             <ul>
               <li>
                 <a href="https://www.linkedin.com/in/pankajuday">
