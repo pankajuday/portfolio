@@ -10,7 +10,7 @@ const About = () => {
     w-[80%] h-auto justify-center
     " id="about">
       <h1
-      className="md:text-4xl text-3xl font-bold  "
+      className="md:text-4xl text-3xl font-bold border-b-4 border-orange-400 w-fit pb-3 "
       >About Me</h1>
       <div
        className="justify-center items-center flex flex-wrap flex-col top-4 relative"

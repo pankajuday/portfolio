@@ -19,7 +19,7 @@ const Skills = () => {
       w-[80%]  h-auto justify-center
       "
       >
-        <h1 className="md:text-4xl text-3xl font-bold ">My Skills</h1>
+        <h1 className="md:text-4xl text-3xl font-bold border-b-4 border-orange-400 w-fit pb-3 ">My Skills</h1>
       </div>
 
         <div className="justify-evenly flex flex-wrap  md:w-[80%] w-full  h-auto mt-5">

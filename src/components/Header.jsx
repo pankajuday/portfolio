@@ -5,6 +5,7 @@ import Linkedin from "../assets/linkedin.png";
 import Github from "../assets/github.png";
 import Facebook from "../assets/facebook.png";
 import Insta from "../assets/insta.png";
+import x from "../assets/x.png"
 import dgDot from "../assets/dgDot.png";
 import Navbar from "./Navbar";
 import box from "../assets/box.png";
@@ -12,7 +13,7 @@ import box from "../assets/box.png";
 export const Header = () => {
   return (
     <>
-      <div className="absolute w-full  h-full z-20  hidden justify-items-end md:block ">
+      <div className="absolute w-full  h-full z-20  hidden justify-items-end md:block flex-wrap ">
         <img
           src={dgDot}
           alt=""
@@ -34,7 +35,7 @@ export const Header = () => {
               href=""
               className="h-auto w-full  relative md:items-center flex flex-col flex-wrap md:left-20 top-5"
             >
-              <button className="h-10 w-24 text-gray-950 font-bold hover:bg-yellow-500 bg-[#F71850] realtive rounded-lg p-2 border-2 border-[#E317FE]">
+              <button className="h-10 w-24 text-gray-950 font-bold hover:bg-orange-500 bg-[#F71850] realtive rounded-lg p-2 border-2 border-[#E317FE]">
                 Contact Me
               </button>
             </a>
@@ -64,6 +65,11 @@ export const Header = () => {
               <li>
                 <a href="">
                   <img src={Facebook} alt="Facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/_Pankajuday">
+                  <img src={x} alt="X" />
                 </a>
               </li>
             </ul>
