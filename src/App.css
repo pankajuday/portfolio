@@ -9,7 +9,7 @@ body {
 }
 
 .navbar {
-  @apply  flex-row mt-4   h-16  w-full items-center hidden ;
+  @apply  flex-row mt-1   h-16  w-full items-center hidden ;
   @apply md:flex  ;
   .navbar-logo {
     @apply   md:w-[30%] md:justify-center md:flex md:items-center block ;
@@ -31,17 +31,17 @@ body {
 
 .header{
   @apply h-fit w-full flex flex-col; 
-  @apply md:flex-row md:relative md:justify-between md:mt-4 md:items-center;
+  @apply md:flex-row md:relative md:justify-between  md:items-center;
  .header-img{
   @apply h-auto w-full  flex  relative ;
   @apply  md:justify-evenly  ;
   img{
     @apply relative h-auto w-full  ;
-    @apply md:h-[600px] md:w-[600px] ;
+    @apply md:h-[650px] md:w-[650px] ;
   }
   .imgShadow{
       @apply h-[100%] w-[100%]  absolute  z-10 bg-gradient-to-t   from-gray-950 to-transparent ;
-      @apply  md:h-[600px] md:w-[600px] md:from-5% md:to-transparent md:bg-gradient-to-r md:from-gray-950 ;
+      @apply  md:h-[650px] md:w-[650px] md:from-5% md:to-transparent md:bg-gradient-to-r md:from-gray-950 ;
       
     }
  }
@@ -73,4 +73,18 @@ body {
 
 .card{
   @apply transition-colors delay-150 duration-500 ease-in origin-center;
+}
+
+footer{
+  .social-media{
+    @apply relative w-full h-auto justify-center items-center flex;
+    
+    ul{
+      @apply flex flex-row flex-wrap md:space-x-12 space-x-4 w-fit;
+      li{
+        @apply cursor-pointer md:hover:bg-orange-400 md:h-12 md:w-12 h-8 w-8  p-2  rounded-lg bg-[#ffffff];
+        
+      }
+    }
+   }
 }

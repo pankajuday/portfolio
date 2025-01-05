@@ -12,16 +12,14 @@ import { BgVideo } from "./components/BgVideo";
 function App() {
   return (
     <div className="App" >
-      {/* <BgVideo /> */}
+     
       
       <Header />
       <About />
       <Skills />
       <Projects />
       <Contact />
-      {/* <main>
-      </main>
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }

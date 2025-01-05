@@ -1,20 +1,38 @@
 import React, { useState } from "react";
 import "../index.css";
+import smi from "../assets/social-media.png"
+import send from "../assets/send.png"
+import mail from "../assets/mail.png"
+import available from "../assets/available.png"
+
 
 const Contact = () => {
   const [disable, setDisable] = useState(false);
 
   return (
-    <div className="main justify-center  items-center flex  flex-col flex-wrap h-auto w-full relative top-32">
+    <div className="main justify-center  items-center flex  flex-col flex-wrap h-auto w-full relative top-32 " id="contact">
       <div className="h-auto w-[80%]  ">
         <h1 className="md:text-4xl text-3xl font-bold border-b-4 border-orange-400 w-fit pb-3 ">
           Contect With Me
         </h1>
         <div className=" justify-center items-center flex md:flex-row flex-col flex-wrap mt-10 md:space-x-12">
-          <div className=" h-auto    flex flex-col flex-wrap justify-center space-y-12">
-            <div className="h-32 w-72   rounded-md bg-slate-800 ">kfajsl</div>
-            <div className="h-32 w-72   rounded-md bg-slate-800 ">kfajsl</div>
-            <div className="h-32 w-72   rounded-md bg-slate-800 ">kfajsl</div>
+          <div className=" h-auto    flex flex-col flex-wrap justify-center space-y-7">
+            <div className="h-36 w-72 shadow-inner rounded-md bg-slate-800 justify-center items-center flex flex-col ">
+              <a href="#socialMedia">
+              <img src={smi} alt=""  className="h-24 w-24"/>
+              <span className="text-slate-400" >Socail Media</span>
+              </a>
+        
+            </div>
+            <div className="h-36 w-72 shadow-inner  rounded-md bg-slate-800 justify-center items-center flex flex-col ">
+            <img src={mail} alt="" className="h-16 w-16 mb-3"/>
+            <span className="text-slate-400" >pankajuday7033@gmail.com</span>
+            </div>   
+
+            <div className="h-36 w-72 shadow-inner   rounded-md bg-slate-800 justify-center items-center flex flex-col ">
+              <img src={available} alt="" className="h-16 w-16"/>
+              <span className="text-slate-400" >Freelance Available</span>
+            </div>            
           </div>
 
           <div className=" h-full md:w-[55%] w-[85%] pb-4  rounded-md bg-slate-800 mt-5 md:mt-0 pt-5 items-center justify-center flex-col flex-wrap flex ">
@@ -49,17 +67,17 @@ const Contact = () => {
                 />
               </div>
               <div className="  w-[85%] h-auto  justify-center items-center flex-row flex-wrap flex">
-                {/* <input type="text" name="message" className="h-44 w-full   rounded-md bg-slate-950  "/> */}
                 <textarea
                   name="message"
                   className="h-52 w-full   rounded-md bg-slate-950 p-2 "
                   placeholder="Type Your Message..."
                 ></textarea>
               </div>
-              <div className="   rounded-md w-[40%]  h-auto justify-center items-center flex-row flex-wrap flex bg-slate-950 ">
-                <button type="submit" className="h-10 w-full ">
+              <div className="   rounded-md w-[40%]  h-auto justify-center space-x-2 items-center flex-row  flex-wrap flex bg-slate-950 ">
+                <button type="submit" className="h-10   ">
                   Submit
                 </button>
+                  <img src={send} alt="" className="h-6  "/>
               </div>
             </form>
           </div>
