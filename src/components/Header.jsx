@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import portPro from "../assets/portPro.png";
+import portProSM from "../assets/portProSM.png";
 import Linkedin from "../assets/linkedin.png";
 import Github from "../assets/github.png";
 import Facebook from "../assets/facebook.png";
@@ -19,14 +20,14 @@ export const Header = () => {
 
       <header className="header">
         <div className="header-title">
-          <div className="relative flex flex-col h-auto w-[80%]">
+          <div className="relative flex flex-col h-auto w-[80%] ">
             <h1>
               Hi, I'm <span className="text-[#F71850]">Pankaj</span>
             </h1>
             <p>Crafting seamless digital solutions that bring ideas to life.</p>
             <a
               href=""
-              className="h-auto w-full  relative md:items-center flex flex-col flex-wrap md:left-20 top-5"
+              className="h-auto w-full  relative md:items-center flex flex-row flex-wrap md:left-20 top-5 hidden md:block"
             >
               <button className="h-10 w-24 text-gray-950 font-bold hover:bg-orange-500 bg-[#E317FE] realtive rounded-lg p-2 border-2 border-[#F71850]" >
                 Contact Me
@@ -71,8 +72,9 @@ export const Header = () => {
 
         <div className="header-img">
           <div className="imgShadow"></div>
-          <img src={portPro} alt="Portfolio" className="hidden md:block"/>
-          <img src={img} alt="Portfolio" className="md:hidden"/>
+          <img src={portPro} alt="Portfolio" className="hidden xl:block"/>
+          <img src={portProSM} alt="Portfolio" className="hidden md:block xl:hidden"/>
+          <img src={img} alt="Portfolio" className="md:hidden xl:hidden "/>
         </div>
       </header>
     </>

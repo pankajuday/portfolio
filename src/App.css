@@ -50,11 +50,11 @@ body {
   @apply h-auto w-full  justify-center  items-center absolute  z-20 flex flex-col top-80  ;
   @apply md:justify-evenly md:relative md:pt-0 md:top-0;
   h1{
-    @apply font-bold cursor-text text-4xl;
+    @apply font-bold cursor-text text-3xl;
     @apply md:text-6xl  ;
   }
   p{
-    @apply text-lg cursor-text text-left ml-5 mt-3 border-l-4 pl-2 border-[#E317FE];
+    @apply text-sm md:text-lg cursor-text text-left ml-5 mt-3 border-l-4 pl-2 border-[#E317FE];
   }
  }
 
