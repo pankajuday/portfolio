@@ -13,7 +13,7 @@ const Projects = () => {
         </h1>
       </div>
       <div className="h-auto w-[80%] flex flex-row flex-wrap justify-center items-center mt-3">
-        <div className="card m-2 h-80 w-80 border-2 rounded-lg overflow-hidden relative">
+        <div className="card m-2 h-96 w-80 border-2 rounded-lg overflow-hidden relative">
           <div className=" h-40 w-fit overflow-hidden relative ">
             <img src={intube} alt="" className="" />
           </div>
@@ -45,7 +45,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-        <div className="card m-2 h-80 w-80 border-2 rounded-lg overflow-hidden relative">
+        <div className="card m-2 h-96 w-80 border-2 rounded-lg overflow-hidden relative">
           <div className=" h-40 w-fit overflow-hidden relative ">
             <img src={gitProf} alt="" className="" />
           </div>
@@ -65,7 +65,7 @@ const Projects = () => {
             It allows users to search for GitHub profiles and displays details like the username, bio, repos, and more.
             </p>
           </div>
-          <div className="">
+          
             <div className="p-2 space-x-3 flex flex-row flex-wrap">
               <a
                 href="https://github.com/pankajuday/GitHubProfileViewer.git"
@@ -76,7 +76,6 @@ const Projects = () => {
               </a>
               <a href="https://pankajuday.github.io/GitHubProfileViewer/" target="_blank" className="text-yellow-500">Live</a>
             </div>
-          </div>
         </div>
       </div>
     </div>
