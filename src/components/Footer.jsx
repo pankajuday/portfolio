@@ -9,7 +9,7 @@ import x from "../assets/x.png"
 const Footer = () => {
   return (
     <footer className=" relative bottom-0 mt-36 h-32 w-full bg-slate-800 border-t-2 border-slate-500 justify-center flex-col items-center flex space-y-5">
-      <h1 className="md:text-3xl text-2xl text-[#F71850]">" Thank You For Scrolling "</h1>
+      <h1 className="md:text-3xl text-xl text-[#F71850]">" Thank You For Scrolling "</h1>
       <div className="social-media">
                   <ul>
                     <li>
