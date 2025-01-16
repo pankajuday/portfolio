@@ -26,7 +26,7 @@ const Contact = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "/api/client/send-message",
+        `${import.meta.env.VITE_PROXY}/api/client/send-message`,
         formData
       );
       alert("Thank you! Your message has been successfully submitted. We'll get back to you soon!");
