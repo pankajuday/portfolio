@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "portfolio-server-pankaj.vercel.app",
+        target: import.meta.env.VITE_PROXY,
         changeOrigin: true,
       },
     },
