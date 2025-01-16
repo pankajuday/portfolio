@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./index.css";
 import { Header } from "./components/Header";
-import { BgVideo } from "./components/BgVideo";
+
 
 function App() {
   return (
