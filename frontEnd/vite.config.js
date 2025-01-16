@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: import.meta.env.VITE_PROXY,
+        target: "https://17frijan25.azurewebsites.net",
         changeOrigin: true,
       },
     },

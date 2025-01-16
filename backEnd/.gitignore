@@ -68,9 +68,10 @@ web_modules/
 
 # Yarn Integrity file
 .yarn-integrity
-
+.vercel.json
 # dotenv environment variables file
 .env
+.env.local
 .env.test
 .env.production
 
@@ -119,3 +120,5 @@ dist
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
 .DS_Store
+.vercel
+.env*.local
