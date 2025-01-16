@@ -13,7 +13,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  console.log(formData);
+
   
   
 
