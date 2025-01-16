@@ -9,6 +9,7 @@ export default defineConfig({
       "/api": {
         target: "https://17frijan25.azurewebsites.net",
         changeOrigin: true,
+        secure:true,
       },
     },
   },
