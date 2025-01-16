@@ -10,6 +10,7 @@ export default defineConfig({
         target: "https://17frijan25.azurewebsites.net",
         changeOrigin: true,
         secure:true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
