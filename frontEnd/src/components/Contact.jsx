@@ -14,8 +14,6 @@ const Contact = () => {
     message: "",
   });
   console.log(formData);
-  
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +27,9 @@ const Contact = () => {
         `${import.meta.env.VITE_PROXY}/api/client/send-message`,
         formData
       );
-      alert("Thank you! Your message has been successfully submitted. We'll get back to you soon!");
+      alert(
+        "Thank you! Your message has been successfully submitted. We'll get back to you soon!"
+      );
       if (response.status === 201) {
         setSuccess(true);
         setFormData({ email: "", fullName: "", subject: "", message: "" });
@@ -67,10 +67,9 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className=" h-full md:w-[55%] w-[85%] pb-4  rounded-md bg-slate-800 mt-5 md:mt-0 pt-5 items-center justify-center flex-col flex-wrap flex ">
+          <div className=" h-full md:w-[55%] w-[100%] pb-4  rounded-md bg-slate-800 mt-5 md:mt-0 pt-5 items-center justify-center flex-col flex-wrap flex ">
             <form
-            onSubmit={handleSubmit}
-             
+              onSubmit={handleSubmit}
               className="h-full w-full   justify-center items-center flex-row flex-wrap flex space-y-5"
             >
               <div className=" w-[85%]   h-auto  justify-center items-center  md:flex-col flex-row flex-wrap flex mt-5">
@@ -80,7 +79,6 @@ const Contact = () => {
                     name="fullName"
                     className=" h-10   rounded-md md:w-[48%] w-full bg-slate-950 p-2"
                     placeholder="Enter Your Name"
-                    
                     value={formData.fullName}
                     onChange={handleChange}
                     required
@@ -122,7 +120,7 @@ const Contact = () => {
               </div>
               <div className="   rounded-md w-[40%]  h-auto justify-center space-x-2 items-center flex-row  flex-wrap flex bg-slate-950 ">
                 <button type="submit" className="h-10   ">
-                  Submit
+                  Send
                 </button>
                 <img src={send} alt="" className="h-6  " />
               </div>
