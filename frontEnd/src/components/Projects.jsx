@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import intube from "../assets/intube.jpg";
 import gitProf from "../assets/githuProf.png";
+import "../App.css"
 
 
 const Projects = () => {
@@ -17,19 +18,19 @@ const Projects = () => {
           <div className=" h-40 w-fit overflow-hidden relative ">
             <img src={intube} alt="" className="" />
           </div>
-          <div className="mt-2 ml-2 flex flex-row space-x-2 items-center  ">
+          <div className="mt-2 ml-2 flex flex-col space-x-2  ">
             <h1 className="text-xl font-bold ">Intube</h1>
+            <div className="space-x-2">
             <span className="text-slate-200 text-[12px] italic">MongoDB</span>
             <span className="text-slate-200 text-[12px] italic">
               Express.js
             </span>
             <span className="text-slate-200 text-[12px] italic">Node.js</span>
+            </div>
           </div>
-          <div className="p-2 pb-0 relative h-auto">
+          <div className="p-2 pb-0 relative  h-32  overflow-auto scrollbar">
             <p>
-              The project is a complete backend for a video hosting platform
-              similar to YouTube, built with Node.js, Express.js, MongoDB,
-              Mongoose, JWT, and bcrypt.
+            This project is a complete backend REST API for a video hosting platform, similar to YouTube. It is built using Node.js and Express.js for the server, with MongoDB and Mongoose for the database and user authentication with JWT and ensures secure password storage using bcrypt. 
             </p>
           </div>
           <div className="">
@@ -60,9 +61,12 @@ const Projects = () => {
             <span className="text-slate-200 text-[12px] italic">CSS</span>
             </div>
           </div>
-          <div className="p-2 pb-0 relative h-auto ">
+          <div className="p-2 pb-0 relative h-32 overflow-auto 
+          scrollbar
+
+          ">
             <p>
-            It allows users to search for GitHub profiles and displays details like the username, bio, repos, and more.
+            GitHub Profile Viewer is a simple web app built with HTML, CSS, and JavaScript that uses the GitHub API. Users can search for any GitHub username to view their profile details, including name, bio, repositories, followers, and more.
             </p>
           </div>
           
