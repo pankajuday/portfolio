@@ -5,7 +5,7 @@ import "../App.css";
 
 const ProjectCard = ({ name, description, image, technologies, liveLink, github }) => {
   return (
-    <div className="card m-2 h-96 w-80 border-2 rounded-lg overflow-hidden relative">
+    <div className="card m-2 h-96 w-80 border-2 rounded-lg overflow-hidden relative transition-all duration-300  hover:scale-105 active:scale-90">
       <div className="h-40 w-fit overflow-hidden relative">
         <img src={image} alt={name} className="" />
       </div>
@@ -40,11 +40,11 @@ const ProjectCard = ({ name, description, image, technologies, liveLink, github 
 
 const Projects = () => {
   return (
-    <div className="w-full h-auto flex flex-col flex-wrap justify-center items-center relative top-24" id="projects">
+    <div className="w-full h-auto flex flex-col flex-wrap justify-center items-center relative top-24 " id="projects ">
       <div className="w-[80%]">
         <h1 className="md:text-4xl text-3xl font-bold border-b-4 border-orange-400 w-fit pb-3">My Projects</h1>
       </div>
-      <div className="h-auto w-[80%] flex flex-row flex-wrap justify-center items-center">
+      <div className="h-auto w-[80%] flex flex-row flex-wrap justify-center items-center ">
         {project.map((proj, index) => (
           <ProjectCard key={index} {...proj} />
         ))}

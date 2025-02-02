@@ -23,7 +23,7 @@ body {
     ul {
       @apply font-bold text-lg flex flex-row items-center space-x-20 ml-10 ;
       li {
-        @apply cursor-pointer hover:border-0 rounded-lg p-2 hover:bg-gray-950 fill-transparent   hover:border-white ;
+        @apply cursor-pointer hover:border-0 rounded-lg p-2 hover:bg-slate-950 fill-transparent   hover:border-white ;
       }
     }
   }
@@ -40,8 +40,8 @@ body {
     @apply md:h-[650px] md:w-[650px] ;
   }
   .imgShadow{
-      @apply h-[100%] w-[100%]  absolute  z-10 bg-gradient-to-t   from-gray-950 to-transparent ;
-      @apply  md:h-[650px] md:w-[650px] md:from-5% md:to-transparent md:bg-gradient-to-r md:from-gray-950 ;
+      @apply h-[100%] w-[100%]  absolute  z-10 bg-gradient-to-t   from-slate-950 to-transparent ;
+      @apply  md:h-[650px] md:w-[650px] md:from-5% md:to-transparent md:bg-gradient-to-r md:from-slate-950 ;
       
     }
  }
@@ -64,7 +64,7 @@ body {
   ul{
     @apply flex flex-row flex-wrap space-x-12 w-fit;
     li{
-      @apply cursor-pointer md:hover:bg-slate-100 h-12 w-12  p-2  rounded-lg bg-cyan-300;
+      @apply cursor-pointer md:hover:bg-slate-100 h-12 w-12  p-2  rounded-lg bg-slate-300;
       
     }
   }

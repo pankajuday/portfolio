@@ -23,7 +23,7 @@ const Header = () => {
               href="#contact"
               className="h-auto w-full relative md:items-center flex flex-row flex-wrap md:left-20 top-5 hidden md:block"
             >
-              <button className="h-10 w-24 text-gray-950 font-bold hover:bg-[#F71850] bg-cyan-400 relative rounded-lg p-2 border-2 border-[#F71850] transition-colors duration-300">
+              <button className="h-10 w-24 text-slate-950 font-bold hover:bg-white bg-slate-200 relative rounded-lg p-2 border-2 border-slate-500 transition-transform duration-300 hover:scale-125 active:scale-90">
                 Contact Me
               </button>
             </a>
