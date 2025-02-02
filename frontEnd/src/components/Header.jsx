@@ -1,82 +1,60 @@
 import React from "react";
 import "../App.css";
-import portPro from "../assets/portPro.png";
-import portProSM from "../assets/portProSM.png";
-import Linkedin from "../assets/linkedin.png";
-import Github from "../assets/github.png";
-import Facebook from "../assets/facebook.png";
-import Insta from "../assets/insta.png";
-import x from "../assets/x.png"
-import dgDot from "../assets/dgDot.png";
+import { headerData } from "../data/data.js";
 import Navbar from "./Navbar";
-import box from "../assets/box.png";
-import img from "../assets/img.jpg";
 
-export const Header = () => {
+const Header = () => {
+  const { title, subtitle, titleHighlight, images, socialLinks } = headerData;
+
   return (
     <>
-
       <Navbar />
 
       <header className="header">
         <div className="header-title">
-          <div className="relative flex flex-col h-auto w-[80%] ">
-            <h1>
-              Hi, I'm <span className="text-[#F71850]">Pankaj</span>
+          <div className="relative flex flex-col h-auto w-[80%]">
+            <h1 className="animate-color-cycle">
+              {title.split(titleHighlight)[0]}
+              <span className="text-[#F71850]">{titleHighlight}</span>
+              {title.split(titleHighlight)[1]}
             </h1>
-            <p>Crafting seamless digital solutions that bring ideas to life.</p>
+            <p>{subtitle}</p>
             <a
-              href=""
-              className="h-auto w-full  relative md:items-center flex flex-row flex-wrap md:left-20 top-5 hidden md:block"
+              href="#contact"
+              className="h-auto w-full relative md:items-center flex flex-row flex-wrap md:left-20 top-5 hidden md:block"
             >
-              <button className="h-10 w-24 text-gray-950 font-bold hover:bg-orange-500 bg-[#E317FE] realtive rounded-lg p-2 border-2 border-[#F71850]" >
+              <button className="h-10 w-24 text-gray-950 font-bold hover:bg-[#F71850] bg-cyan-400 relative rounded-lg p-2 border-2 border-[#F71850] transition-colors duration-300">
                 Contact Me
               </button>
             </a>
           </div>
 
           <div className="social-media">
-              <h3 className="text-xl mb-3" id="socialMedia">Find Me On</h3>
+            <h3 className="text-xl mb-3" id="socialMedia">Find Me On</h3>
             <ul>
-              <li>
-                <a href="https://www.linkedin.com/in/pankajuday" target="_blank">
-                  <img src={Linkedin} alt="LinkedIn" />
-                </a>
-              </li>
-
-              <li>
-                <a href="https://github.com/pankajuday" target="_blank">
-                  <img src={Github} alt="Github" />
-                </a>
-              </li>
-
-              <li>
-                <a href="https://instagram.com/pankajuday_" target="_blank">
-                  <img src={Insta} alt="Instagram" />
-                </a>
-              </li>
-
-              <li>
-                <a href="" target="_blank">
-                  <img src={Facebook} alt="Facebook" />
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/_Pankajuday" target="_blank">
-                  <img src={x} alt="X" />
-                </a>
-              </li>
+              {socialLinks.map((link, index) => (
+                <li
+                  key={index}
+                  className="transition-transform duration-300 hover:scale-125 active:scale-90"
+                >
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <img src={link.img} alt={link.name} className="h-8 w-8" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="header-img">
           <div className="imgShadow"></div>
-          <img src={portPro} alt="Portfolio" className="hidden xl:block"/>
-          <img src={portProSM} alt="Portfolio" className="hidden md:block xl:hidden"/>
-          <img src={img} alt="Portfolio" className="md:hidden xl:hidden "/>
+          <img src={images.portPro} alt="Portfolio" className="hidden xl:block" />
+          <img src={images.portProSM} alt="Portfolio" className="hidden md:block xl:hidden" />
+          <img src={images.img} alt="Portfolio" className="md:hidden xl:hidden" />
         </div>
       </header>
     </>
   );
 };
+
+export default Header;
