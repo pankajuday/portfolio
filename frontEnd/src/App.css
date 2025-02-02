@@ -5,7 +5,7 @@
   font-family: monospace;
 }
 body {
-  @apply bg-gray-950 text-white;
+  @apply bg-slate-950 text-white;
 }
 
 .navbar {
@@ -54,7 +54,7 @@ body {
     @apply md:text-6xl  ;
   }
   p{
-    @apply text-sm md:text-lg cursor-text text-left ml-5 mt-3 border-l-4 pl-2 border-[#E317FE];
+    @apply text-sm md:text-lg cursor-text text-left ml-5 mt-3 border-l-4 pl-2 border-slate-300;
   }
  }
 
@@ -64,7 +64,7 @@ body {
   ul{
     @apply flex flex-row flex-wrap space-x-12 w-fit;
     li{
-      @apply cursor-pointer md:hover:bg-orange-400 h-12 w-12  p-2  rounded-lg bg-[#F71850];
+      @apply cursor-pointer md:hover:bg-slate-100 h-12 w-12  p-2  rounded-lg bg-cyan-300;
       
     }
   }
@@ -109,3 +109,36 @@ footer{
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #c0a0b9;
   } */
+
+
+
+  /* Slide-in animation matching Framer Motion's behavior */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+/* Hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.active\:scale-95:active {
+  transform: scale(0.95);
+}
+
+/* Transition settings */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

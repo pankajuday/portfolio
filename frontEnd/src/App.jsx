@@ -6,7 +6,7 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./index.css";
-import { Header } from "./components/Header";
+import Header  from "./components/Header";
 
 
 function App() {

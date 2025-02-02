@@ -14,7 +14,7 @@ const Navbar = () => {
         <a href="#" className=" mobile-menu md:text-6xl ">
           <img src={three} alt="" className="z-50" onClick={toggle}/>
 
-          <ul className={`  md:hidden flex flex-wrap h-fit w-fit bg-[#F71850] absolute z-20 text-2xl right-5 p-2 rounded-lg ${isOpen ? 'hidden' : ''}`}>
+          <ul className={` text-white  md:hidden flex flex-wrap h-fit w-fit bg-slate-950 absolute z-20 text-2xl right-5 p-2 rounded-sm ${isOpen ? 'hidden' : ''}`}>
             <a href="#about">
               <li>About</li>
             </a>
