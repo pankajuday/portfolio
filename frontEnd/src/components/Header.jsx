@@ -48,7 +48,7 @@ const Header = () => {
 
         <div className="header-img">
           <div className="imgShadow"></div>
-          <img src={images.portPro} alt="Portfolio" className="hidden xl:block" />
+          <img src={images.portProSM} alt="Portfolio" className="hidden xl:block border-4 rounded-xl" />
           <img src={images.portProSM} alt="Portfolio" className="hidden md:block xl:hidden" />
           <img src={images.img} alt="Portfolio" className="md:hidden xl:hidden" />
         </div>
