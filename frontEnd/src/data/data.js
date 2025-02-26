@@ -30,7 +30,7 @@ export const project = [
       " This project is a complete backend REST API for a video hosting platform, similar to YouTube. It is built using Node.js and Express.js for the server, with MongoDB and Mongoose for the database and user authentication with JWT and ensures secure password storage using bcrypt. ",
     image: intube,
     technologies: ["MongoDB", "Express.js", "Node.js", "Socket.io"],
-    liveLink: "",
+    liveLink: "https://intube.pankajuday.tech",
     github: "https://github.com/pankajuday/InTubeVideoStream.git",
   },
   {
