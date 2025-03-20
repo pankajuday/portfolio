@@ -3,6 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import bodyParser from "body-parser";
+import dotenv from "dotenv"
+dotenv.config()
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(
     credentials: true,
   })
 );
+console.log(process.env.CORS_ORIGIN);
+
 
 app.use(bodyParser.json())
 app.use(express.json({limit:"16kb"}))
