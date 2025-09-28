@@ -132,7 +132,7 @@ const Header = () => {
       <Navbar />
       <header
         id="header-section"
-        className="min-h-screen flex flex-col justify-center relative overflow-hidden py-20 sm:py-32"
+        className="min-h-screen flex flex-col justify-center relative overflow-hidden py-20 sm:py-32 "
       >
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-3xl">
@@ -244,14 +244,14 @@ const Header = () => {
             </pre>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <a href="#about" className="inline-flex flex-col items-center">
             <span className="text-sm text-gray-500 mb-2">Scroll</span>
             <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
               <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 animate-scroll-down"></div>
             </div>
           </a>
-        </div>
+        </div> */}
       </header>
     </>
   );
