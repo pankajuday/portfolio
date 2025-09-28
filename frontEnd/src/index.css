@@ -198,3 +198,34 @@
 .gradient-text {
   @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
 }
+
+/* Table grid background pattern using Tailwind slate colors */
+.table-grid-bg {
+  @apply relative;
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+.table-grid-bg::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 1rem 1rem;
+}
+
+.table-grid-bg::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(8, 13, 28, 0.3) 80%,
+    rgba(8, 13, 28, 0.8) 95%,
+    rgb(8, 13, 28) 100%
+  );
+}
