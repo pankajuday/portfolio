@@ -21,17 +21,17 @@ const socialLinksData = [
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com/pankajuday_",
+    url: "https://www.facebook.com/pankajuday",
     icon: socialIcons.Facebook,
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/pankajuday_",
+    url: "https://www.instagram.com/hii.pankaj.kumar",
     icon: socialIcons.Instagram,
   },
   { 
     name: "X", 
-    url: "https://x.com/_Pankajuday", 
+    url: "https://x.com/pankajudaytech", 
     icon: socialIcons.X 
   },
 ];
