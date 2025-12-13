@@ -2,98 +2,55 @@ import React from "react";
 import { skills } from "../data/data.js";
 import Icon from "./Icon.jsx";
 
-// Fallback component if icon fails to load
-const FallbackIcon = ({ name, color }) => (
-  <div
-    className="w-full h-full rounded-md flex items-center justify-center text-xs font-bold"
-    style={{ backgroundColor: color || "#6B7280", color: "white" }}
-  >
-    {name.slice(0, 2).toUpperCase()}
+const SkillCategory = ({ title, items, className }) => (
+  <div className={`glass-panel p-8 rounded-3xl border border-slate-800 hover:border-orange-500/20 transition-all duration-500 ${className}`}>
+    <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+      <div className="w-1.5 h-8 bg-gradient-to-b from-orange-500 to-red-600 rounded-full"></div>
+      {title}
+    </h3>
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      {items.map((skill, idx) => (
+        <div key={idx} className="group flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-900/50 hover:bg-slate-800 border border-slate-800 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-900/10 cursor-default">
+          <div className="w-12 h-12 mb-4 flex items-center justify-center text-slate-400 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
+             <Icon icon={skill.icon} name={skill.name} size="100%" color={skill.color} />
+          </div>
+          <span className="text-sm font-medium text-slate-400 group-hover:text-orange-400 transition-colors text-center">{skill.name}</span>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
-const SkillCard = ({ name, icon, color }) => {
-  return (
-    <div className="group">
-      <div className="card relative flex flex-col items-center justify-center size-24 sm:w-28 sm:h-28 py-2 px-2 backdrop-blur-sm transform transition-all duration-300 border border-slate-700/50 hover:border-blue-500/50 group-hover:scale-105 group-hover:-translate-y-1">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-20 transition duration-300 blur"></div>
-        <div className="flex flex-col items-center space-y-2 relative z-10">
-          <div className="h-10 w-10 flex items-center justify-center">
-            {icon ? (
-              <Icon
-                icon={icon}
-                name={name}
-                size="40px"
-                color={color}
-                className="transition-all duration-300 group-hover:scale-110"
-              />
-            ) : (
-              <FallbackIcon name={name} color={color} />
-            )}
-          </div>
-          <h3 className="text-base font-semibold group-hover:text-blue-400 transition-colors duration-300 text-center">
-            {name}
-          </h3>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Skills = () => {
+  // Categorize skills
+  const frontend = skills.filter(s => ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'].includes(s.name));
+  const backend = skills.filter(s => ['Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'REST API'].includes(s.name));
+  const tools = skills.filter(s => ['Git', 'Docker', 'Linux'].includes(s.name));
+  
+  // Catch-all for any missed skills
+  const others = skills.filter(s => !frontend.includes(s) && !backend.includes(s) && !tools.includes(s));
+
   return (
-    <section id="skills" className="py-20 relative">
-      {/* Background element */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+    <section id="skills" className="py-24 relative overflow-hidden">
+       {/* Background Gradients */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950"></div>
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]"></div>
       </div>
 
-      <div className="container mx-auto">
-        <h2 className="section-title">My Skills</h2>
-
-        <div className="mt-12">
-          <div className="flex flex-wrap gap-x-6 gap-y-6 justify-start">
-            {skills.map((skill, index) => (
-              <SkillCard key={index} {...skill} />
-            ))}
-          </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="section-heading inline-block mb-4">Technical Expertise</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            A comprehensive toolkit that empowers me to build scalable, high-performance web applications from front to back.
+          </p>
         </div>
 
-        {/* Skill categories */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="card backdrop-blur-sm">
-            <h3 className="text-xl font-bold mb-4 flex items-center">
-              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-              Frontend
-            </h3>
-            <p className="text-gray-400">
-              Building responsive and interactive user interfaces with modern
-              frameworks.
-            </p>
-          </div>
-
-          <div className="card backdrop-blur-sm">
-            <h3 className="text-xl font-bold mb-4 flex items-center">
-              <span className="inline-block w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-              Backend
-            </h3>
-            <p className="text-gray-400">
-              Developing robust server-side applications with scalable
-              architectures.
-            </p>
-          </div>
-
-          <div className="card backdrop-blur-sm">
-            <h3 className="text-xl font-bold mb-4 flex items-center">
-              <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-              Tools & Deployment
-            </h3>
-            <p className="text-gray-400">
-              Using industry-standard tools for efficient development and
-              deployment.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <SkillCategory title="Frontend Development" items={frontend} className="lg:mt-0" />
+          <SkillCategory title="Backend Architecture" items={backend} className="lg:mt-12" />
+          <SkillCategory title="DevOps & Tools" items={[...tools, ...others]} className="lg:mt-24" />
         </div>
       </div>
     </section>

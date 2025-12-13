@@ -9,16 +9,12 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white scroll-smooth">
-        <div className="table-grid-bg max-h-screen  mx-auto px-10 sm:px-6 lg:px-40">
-          <Header /> 
-        </div>
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </div>
+    <div className="min-h-screen w-full bg-slate-950 text-white selection:bg-orange-500/30 selection:text-orange-200">
+      <Header /> 
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
       <Footer />
     </div>
   );

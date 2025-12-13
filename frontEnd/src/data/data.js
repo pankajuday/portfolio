@@ -19,14 +19,14 @@ const socialLinksData = [
     url: "https://github.com/pankajuday", 
     icon: socialIcons.GitHub 
   },
-  {
-    name: "Facebook",
-    url: "https://www.facebook.com/pankajuday",
-    icon: socialIcons.Facebook,
-  },
+  // {
+  //   name: "Facebook",
+  //   url: "https://www.facebook.com/pankajuday",
+  //   icon: socialIcons.Facebook,
+  // },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/hii.pankaj.kumar",
+    url: "https://www.instagram.com/pankajudaytech",
     icon: socialIcons.Instagram,
   },
   { 
@@ -35,6 +35,8 @@ const socialLinksData = [
     icon: socialIcons.X 
   },
 ];
+
+export const mail = "contact@pankajuday.tech";
 
 export const project = [
   {
@@ -75,18 +77,18 @@ export const skills = [
 
 export const headerData = {
   // title: "Transforming Ideas Into Digital Reality",
-  title: "Every great product starts with a ",
+  title: "Designing, developing, and deploying real solutions BACK TO FRONT.",
   subtitle:
-    "I'm a full-stack developer who writes clear, maintainable code from database to browser. Whether it's a small internal tool or a customer-facing product, I care about making every click and request feel fast and  reliable.",
+    "I write clean, maintainable code from database to browser. Whether it's a small internal tool or a customer-facing product, I care about making every click and request feel fast and  reliable.",
   // titleHighlight: "Digital Reality",
-  titleHighlight: "Single Line.",
+  titleHighlight: "BACK TO FRONT.",
   socialLinks: socialLinksData,
 };
 
 export const aboutSectionData = {
   about: {
   intro:
-    "I'm a full stack developer who enjoys building things that work well and make sense. I like writing code that’s clean, understandable, and does the job without unnecessary complexity.",
+    "I enjoy building things that work well and make sense. I like writing code that’s clean, understandable, and does the job without unnecessary complexity.",
   details:
     "I started coding a few years ago out of curiosity, and it slowly turned into something I do every day. Over time, I’ve worked on projects like social platforms, e-commerce sites, and APIs. I keep learning as I go, and I try to get a little better with each project.",
 },
@@ -102,25 +104,25 @@ export const aboutSectionData = {
   skills: [
     {
       name: "Frontend Development",
-      percent: 90,
+      percent: 75,
       color: "blue-400",
       gradient: "from-blue-500 to-blue-400",
     },
     {
       name: "Backend Development",
-      percent: 95,
+      percent: 85,
       color: "purple-400",
       gradient: "from-purple-500 to-purple-400",
     },
     {
       name: "Database Management",
-      percent: 85,
+      percent: 70,
       color: "teal-400",
       gradient: "from-teal-500 to-teal-400",
     },
     {
       name: "DevOps",
-      percent: 75,
+      percent: 65,
       color: "amber-400",
       gradient: "from-amber-500 to-amber-400",
     },

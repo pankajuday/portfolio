@@ -39,36 +39,36 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'py-2 bg-slate-900/80 backdrop-blur-sm shadow-lg' : 'py-4 bg-transparent'
+    <nav className={`fixed top-4 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'translate-y-0' : 'translate-y-2'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className={`glass-panel rounded-2xl px-6 py-3 flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? 'bg-slate-900/80 shadow-2xl' : 'bg-slate-900/40 border-transparent shadow-none'
+        }`}>
           {/* Logo */}
-          <a href="#" className="flex items-center space-x-3">
-            <span className="font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              PankajU
+          <a href="#" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-orange-500/50 transition-all duration-300">
+                P
+            </div>
+            <span className="font-bold text-xl text-slate-200 tracking-tight group-hover:text-white transition-colors">
+              Pankaj<span className="text-orange-500">U</span>
             </span>
-            <div className="hidden sm:block h-6 w-0.5 bg-slate-700"></div>
-            <span className="hidden sm:block text-sm font-medium text-slate-400">Full Stack Developer</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-1">
+          <div className="hidden md:flex items-center gap-1 bg-slate-800/50 rounded-full p-1 border border-slate-700/50">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`nav-link text-sm font-medium px-3 py-2 rounded-md transition-all ${
+                className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeSection === item.id 
-                    ? "text-blue-400 bg-blue-500/10" 
-                    : "text-gray-300"
+                    ? "text-white bg-slate-700 shadow-sm" 
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-700/50"
                 }`}
               >
                 {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute bottom-0.5 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full"></span>
-                )}
               </a>
             ))}
           </div>
@@ -77,12 +77,12 @@ const Navbar = () => {
           <div className="hidden md:block">
             <a 
               href="#contact" 
-              className="inline-flex items-center px-4 py-2 border border-blue-500 rounded-md text-sm font-medium text-blue-400 hover:bg-blue-500/10 transition-colors duration-200"
+              className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 border border-slate-700 hover:border-slate-600 flex items-center gap-2 group"
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <span>Let's Talk</span>
+              <svg className="w-4 h-4 text-orange-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-              Get in Touch
             </a>
           </div>
 
@@ -90,71 +90,42 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-800/50 focus:outline-none transition-colors"
+              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
             >
               <span className="sr-only">Open main menu</span>
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
+              {isOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div
-        className={`${
-          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        } md:hidden fixed top-16 left-0 right-0 transition-all duration-300 ease-in-out transform`}
-      >
-        <div className="bg-slate-900/95 backdrop-blur-sm shadow-lg border-t border-slate-800">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                  activeSection === item.id
-                    ? "text-blue-400 bg-blue-500/10"
-                    : "text-gray-300 hover:text-white hover:bg-slate-800/50"
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-            
-            {/* Contact button for mobile */}
+      {/* Mobile Menu */}
+      <div className={`md:hidden absolute top-full left-4 right-4 mt-2 glass-panel rounded-2xl overflow-hidden transition-all duration-300 origin-top ${
+        isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
+      }`}>
+        <div className="px-4 py-4 space-y-2">
+          {navItems.map((item) => (
             <a
-              href="#contact"
+              key={item.label}
+              href={item.href}
               onClick={() => setIsOpen(false)}
-              className="flex items-center px-3 py-2 rounded-md text-base font-medium text-blue-400 hover:bg-blue-500/10 transition-colors duration-200"
+              className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                activeSection === item.id
+                  ? "bg-orange-500/10 text-orange-500"
+                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
+              }`}
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Get in Touch
+              {item.label}
             </a>
-          </div>
+          ))}
         </div>
       </div>
     </nav>
