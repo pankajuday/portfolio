@@ -14,27 +14,27 @@ const About = () => {
   // Dynamic content based on active tab
   const tabContent = {
     story: (
-      <>
-        <p className="text-lg leading-relaxed text-gray-300 mb-6">
+      <div className="animate-fade-in">
+        <p className="text-lg leading-relaxed text-slate-300 mb-6">
           {aboutSectionData.about.intro}
         </p>
-        <p
-          className={`text-lg leading-relaxed text-gray-300 transition-all duration-500 ${
+        <div
+          className={`text-lg leading-relaxed text-slate-400 transition-all duration-500 overflow-hidden ${
             isExpanded
-              ? "opacity-100 max-h-96"
-              : "opacity-0 max-h-0 overflow-hidden"
+              ? "opacity-100 max-h-[1000px]"
+              : "opacity-0 max-h-0"
           }`}
         >
-          {aboutSectionData.about.details}
-        </p>
+          <p>{aboutSectionData.about.details}</p>
+        </div>
         <div className="mt-4">
           <button
             onClick={toggleReadMore}
-            className="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1 transition-colors"
+            className="text-orange-400 hover:text-orange-300 font-medium flex items-center gap-2 transition-colors group"
           >
             {isExpanded ? "Read Less" : "Read More"}
             <svg
-              className={`w-4 h-4 transform transition-transform duration-300 ${
+              className={`w-4 h-4 transform transition-transform duration-300 group-hover:translate-y-0.5 ${
                 isExpanded ? "rotate-180" : ""
               }`}
               fill="none"
@@ -55,179 +55,111 @@ const About = () => {
           {aboutSectionData.highlights.map((item, idx) => (
             <div
               key={item.label}
-              className={`bg-slate-800/50 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 hover:border-${item.color}/30 transition-colors`}
+              className="glass-panel p-6 rounded-xl border border-slate-800 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className={`text-3xl font-bold text-${item.color} mb-2`}>
+              <div className={`text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-2`}>
                 {item.value}
               </div>
-              <div className="text-sm text-gray-400">{item.label}</div>
+              <div className="text-sm text-slate-400 font-medium">{item.label}</div>
             </div>
           ))}
         </div>
-      </>
+      </div>
     ),
     skills: (
-      <div className="space-y-6">
-        <p className="text-lg leading-relaxed text-gray-300 mb-6">
+      <div className="animate-fade-in">
+        <p className="text-lg leading-relaxed text-slate-400 mb-8">
           I've cultivated expertise in a variety of technologies, focusing on
           building scalable, maintainable applications with modern tools and
           frameworks.
         </p>
-        {/* Skills bars */}
-        <div className="space-y-5">
-          {aboutSectionData.skills.map((skill, idx) => (
-            <div key={skill.name}>
-              <div className="flex justify-between mb-1">
-                <span className="text-gray-300 font-medium">{skill.name}</span>
-                <span className={`text-${skill.color} font-medium`}>
-                  {skill.percent}%
-                </span>
-              </div>
-              <div className="w-full bg-slate-700/50 rounded-full h-2.5">
-                <div
-                  className={`bg-gradient-to-r ${skill.gradient} h-2.5 rounded-full`}
-                  style={{ width: `${skill.percent}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {aboutSectionData.skills.map((skill, idx) => {
+            // Map percentage to meaningful categories
+            let level = "Beginner";
+            if (skill.percent >= 90) level = "Expert";
+            else if (skill.percent >= 80) level = "Advanced";
+            else if (skill.percent >= 70) level = "Proficient";
+            else if (skill.percent >= 60) level = "Skilled";
+            else if (skill.percent >= 40) level = "Intermediate";
+
+            return (
+                <div key={skill.name} className="group relative p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-900/10">
+                    <div className="flex items-center justify-between relative z-10">
+                        <div className="flex flex-col justify-center">
+                            <h4 className="text-slate-200 font-bold text-base mb-1 group-hover:text-white transition-colors">{skill.name}</h4>
+                            <div className="flex items-center gap-2">
+                                <div className="h-1.5 w-24 bg-slate-800 rounded-full overflow-hidden">
+                                    <div className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full" style={{ width: `${skill.percent}%` }}></div>
+                                </div>
+                                <span className="text-xs text-slate-500 font-medium">{level}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+          })}
         </div>
       </div>
     ),
-    // journey: (
-    //   <div className="space-y-6">
-    //     <p className="text-lg leading-relaxed text-gray-300 mb-6">
-    //       My professional journey reflects a continuous path of growth, learning,
-    //       and adaptation to the ever-evolving landscape of web development.
-    //     </p>
-
-    //     {/* Timeline */}
-    //     <div className="relative border-l border-slate-700 ml-3">
-    //       {/* Timeline item 1 */}
-    //       <div className="mb-8 ml-8">
-    //         <div className="absolute w-4 h-4 bg-blue-500 rounded-full mt-1.5 -left-2 border-2 border-slate-900"></div>
-    //         <time className="text-sm font-medium text-blue-400 mb-1 block">
-    //           2023 - Present
-    //         </time>
-    //         <h3 className="text-lg font-semibold text-white">
-    //           Senior Full Stack Developer
-    //         </h3>
-    //         <p className="text-sm text-gray-400">
-    //           Leading development teams to create scalable web applications with
-    //           modern tech stacks. Architecting solutions that emphasize performance,
-    //           security, and exceptional user experience.
-    //         </p>
-    //       </div>
-
-    //       {/* Timeline item 2 */}
-    //       <div className="mb-8 ml-8">
-    //         <div className="absolute w-4 h-4 bg-purple-500 rounded-full mt-1.5 -left-2 border-2 border-slate-900"></div>
-    //         <time className="text-sm font-medium text-purple-400 mb-1 block">
-    //           2020 - 2023
-    //         </time>
-    //         <h3 className="text-lg font-semibold text-white">
-    //           Full Stack Developer
-    //         </h3>
-    //         <p className="text-sm text-gray-400">
-    //           Built and maintained various web applications using MERN stack.
-    //           Implemented RESTful APIs, responsive designs, and optimized database
-    //           operations for improved performance.
-    //         </p>
-    //       </div>
-
-    //       {/* Timeline item 3 */}
-    //       <div className="mb-8 ml-8">
-    //         <div className="absolute w-4 h-4 bg-teal-500 rounded-full mt-1.5 -left-2 border-2 border-slate-900"></div>
-    //         <time className="text-sm font-medium text-teal-400 mb-1 block">
-    //           2018 - 2020
-    //         </time>
-    //         <h3 className="text-lg font-semibold text-white">Frontend Developer</h3>
-    //         <p className="text-sm text-gray-400">
-    //           Specialized in creating interactive and responsive user interfaces
-    //           with React. Focused on component architecture, state management, and
-    //           modern CSS techniques.
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // ),
   };
 
   return (
-    <section id="about" className="py-20 relative scroll-mt-24">
+    <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-slate-800/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="container mx-auto">
-        <h2 className="section-title animate-fadeInUp">About Me</h2>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="section-heading inline-block mb-4">About Me</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Get to know the person behind the code.
+          </p>
+        </div>
 
-        <div className="mt-12 md:flex gap-12 items-start animate-fadeInUp animation-delay-200">
-          {/* Image column */}
-          <div className="md:w-1/3 mb-10 md:mb-0 flex-shrink-0 relative">
-            <div className="relative rounded-xl overflow-hidden border-2 border-slate-700 shadow-xl shadow-slate-900/50">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-20 blur-sm"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Image Column */}
+          <div className="lg:col-span-5 relative group">
+            <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
+            <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+              <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
               <img
                 src={profileImg}
-                alt="Pankaj Uday"
-                className="w-full object-cover aspect-square"
+                alt="Profile"
+                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-50"></div>
             </div>
-
-            {/* Decorative element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-4 border-blue-500/20 rounded-xl z-[-1]"></div>
-            <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-purple-500/20 rounded-xl z-[-1]"></div>
           </div>
 
-          {/* Content column */}
-          <div className="md:w-2/3">
-            {/* Tabs navigation */}
-            <div className="flex mb-8 border-b border-slate-700/50">
-              <button
-                onClick={() => setActiveTab("story")}
-                className={`px-4 py-3 font-medium transition-all ${
-                  activeTab === "story"
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-gray-400 hover:text-gray-300"
-                }`}
-              >
-                My Story
-              </button>
-              <button
-                onClick={() => setActiveTab("skills")}
-                className={`px-4 py-3 font-medium transition-all ${
-                  activeTab === "skills"
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-gray-400 hover:text-gray-300"
-                }`}
-              >
-                Skills
-              </button>
-              {/* <button
-                onClick={() => setActiveTab("journey")}
-                className={`px-4 py-3 font-medium transition-all ${
-                  activeTab === "journey"
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-gray-400 hover:text-gray-300"
-                }`}
-              >
-                Journey
-              </button> */}
+          {/* Content Column */}
+          <div className="lg:col-span-7">
+            <div className="glass-panel rounded-2xl p-1 border border-slate-800/50 bg-slate-900/50 backdrop-blur-sm inline-flex mb-8">
+              {["story", "skills"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    activeTab === tab
+                      ? "bg-slate-800 text-white shadow-lg"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  }`}
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
             </div>
 
-            {/* Tab content */}
-            <div className="transition-all duration-500 ease-out">
-              {tabContent[activeTab]}
+            <div className="min-h-[400px]">
+                {tabContent[activeTab]}
             </div>
           </div>
         </div>
       </div>
-      
     </section>
-    
   );
 };
 

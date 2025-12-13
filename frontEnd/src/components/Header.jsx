@@ -21,7 +21,6 @@ const phrases = [
   "Custom Dev Tools",
 ];
 
-
 const Header = () => {
   const { title, subtitle, titleHighlight, socialLinks } = headerData;
   const animatedTextRef = useRef(null);
@@ -83,175 +82,100 @@ const Header = () => {
     };
   }, []);
 
-  // Particle background effect
-  useEffect(() => {
-    const createParticle = () => {
-      const particle = document.createElement("div");
-      const header = document.querySelector("#header-section");
-      if (!header) return;
-      const size = Math.random() * 8 + 2;
-      particle.style.position = "absolute";
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.background = "rgba(77, 171, 247, 0.2)";
-      particle.style.borderRadius = "50%";
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.opacity = `${Math.random() * 0.6}`;
-      particle.style.boxShadow = "0 0 8px rgba(77, 171, 247, 0.3)";
-      header.appendChild(particle);
-      const maxX = 40;
-      const maxY = 40;
-      const duration = Math.random() * 15000 + 10000;
-      const xMove = Math.random() * maxX * 2 - maxX;
-      const yMove = Math.random() * maxY * 2 - maxY;
-      particle.animate(
-        [
-          { transform: "translate(0, 0)" },
-          { transform: `translate(${xMove}px, ${yMove}px)` },
-        ],
-        {
-          duration: duration,
-          iterations: Infinity,
-          direction: "alternate",
-          easing: "ease-in-out",
-        }
-      );
-      setTimeout(() => {
-        if (header.contains(particle)) {
-          header.removeChild(particle);
-        }
-      }, duration * 2);
-    };
-    const particleInterval = setInterval(createParticle, 1200);
-    return () => clearInterval(particleInterval);
-  }, []);
-
   return (
     <>
       <Navbar />
       <header
         id="header-section"
-        className="min-h-screen flex flex-col justify-center relative overflow-hidden py-20 sm:py-32 "
+        className="min-h-screen flex flex-col justify-center relative overflow-hidden py-20 sm:py-32"
       >
-        <div className="relative z-10 container mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-gray-600 bg-gray-800/30 backdrop-blur-sm">
-              <span className="text-sm font-medium text-gray-300">
-                Full Stack Developer
+        {/* Background Effects */}
+        <div className="absolute inset-0 -z-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950"></div>
+            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] animate-pulse" style={{animationDelay: '2s'}}></div>
+            {/* Grid pattern overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] mask-image-gradient"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-slate-800 backdrop-blur-sm mb-8 animate-fade-in-up">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
+              <span className="text-xs font-medium text-slate-300">Available for new projects</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              {title.split(titleHighlight)[0]}
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                {titleHighlight}
-              </span>
-              {title.split(titleHighlight)[1]}
+
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              {title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">{titleHighlight}</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-400 leading-relaxed max-w-2xl">
+            
+            <p className="text-xl md:text-2xl text-slate-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
               {subtitle}
             </p>
-            <div className="mt-4 h-8 overflow-hidden">
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                <p className="text-lg sm:text-xl font-medium">
-                  <span className="text-gray-400">I build </span>
-                  <span
-                    ref={animatedTextRef}
-                    className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-bold"
-                  ></span>
-                  <span className="animate-blink ml-0.5">|</span>
-                </p>
-              </div>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="group relative px-6 py-3 font-medium text-white rounded-lg overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:text-slate-950"
-              >
-                <div className="absolute inset-0 w-0 bg-white transition-all duration-[250ms] ease-out group-hover:w-full mix-blend-overlay "></div>
-                <div className="relative flex items-center gap-2 ">
-                  <span>Let's Talk Code</span>
-                  <svg
-                    className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </div>
-              </a>
 
-              <a
-                href="#projects"
-                className="group relative px-6 py-3 font-medium rounded-lg overflow-hidden border border-gray-600 text-gray-300 hover:text-white transition-colors duration-300"
+            {/* Dynamic Text */}
+            <div className="h-8 mb-12 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+              <span className="text-lg md:text-xl font-mono text-orange-400">
+                &gt; I build <span ref={animatedTextRef} className="text-slate-200"></span><span className="animate-pulse">_</span>
+              </span>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+              <a 
+                href="#projects" 
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white font-semibold shadow-lg shadow-orange-900/20 hover:shadow-orange-600/30 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
               >
-                <div className="absolute inset-0 w-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                <div className="relative flex items-center gap-2">
-                  <span>See My Work</span>
-                  <svg
-                    className="w-5 h-5 transition-transform duration-200 group-hover:translate-y-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                    />
-                  </svg>
-                </div>
+                View My Work
               </a>
-            </div>{" "}
-            <div className="mt-10 flex items-center gap-5">
-              {socialLinks.map((link, index) => (
-                <div key={index} className="group relative">
+              <a 
+                href="#contact" 
+                className="px-8 py-4 rounded-xl bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold border border-slate-800 hover:border-slate-700 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                Contact Me
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-16 flex items-center justify-center gap-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
+              {socialLinks.map((social, index) => (
+                social.url && (
                   <a
-                    href={link.url}
+                    key={index}
+                    href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative block p-3 rounded-full bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-blue-600/20 group-hover:to-purple-600/20"
-                    aria-label={link.name}
+                    className="text-slate-500 hover:text-orange-400 transition-colors transform hover:scale-110 duration-300"
+                    aria-label={social.name}
                   >
                     <Icon
-                      icon={link.icon}
-                      name={link.name}
-                      size="20px"
+                      icon={social.icon}
+                      name={social.name}
+                      size="24px"
                       color="currentColor"
-                      className="w-5 h-5 text-gray-300 group-hover:text-white transition-all duration-300 group-hover:scale-110"
                     />
                   </a>
-                </div>
+                )
               ))}
             </div>
           </div>
-          <div className="absolute -bottom-6 -left-6 opacity-20 hidden md:block">
-            <pre className="text-blue-500/70 text-xs">
-              {`<header>\n  <h1>Hello World</h1>\n</header>`}
-            </pre>
-          </div>
-          <div className="absolute -top-6 -right-6 opacity-20 hidden md:block">
-            <pre className="text-purple-500/70 text-xs">
-              {`const developer = {\n  name: "Pankaj",\n  skills: ["React", "Node"]\n};`}
-            </pre>
-          </div>
         </div>
-        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <a href="#about" className="inline-flex flex-col items-center">
-            <span className="text-sm text-gray-500 mb-2">Scroll</span>
-            <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
-              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 animate-scroll-down"></div>
-            </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <a href="#about" className="text-slate-600 hover:text-orange-500 transition-colors">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </a>
-        </div> */}
+        </div>
       </header>
     </>
   );

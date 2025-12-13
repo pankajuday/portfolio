@@ -8,96 +8,60 @@
   }
 
   body {
-    @apply font-sans antialiased;
-  }
-  
-  /* Social media colors */
-  :root {
-    --color-linkedin: #0077b5;
-    --color-github: #f5f5f5;
-    --color-twitter: #1da1f2;
-    --color-instagram: #e4405f;
-    --color-facebook: #1877f2;
+    @apply font-sans antialiased bg-slate-950 text-slate-300 selection:bg-orange-500/30 selection:text-orange-200;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.05) 0%, transparent 25%);
   }
 }
 
 @layer components {
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 relative inline-block;
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800/50 shadow-xl;
   }
 
-  .section-title::after {
-    content: '';
-    @apply absolute -bottom-2 left-0 w-1/2 h-1 bg-blue-500 rounded-full;
+  .section-container {
+    @apply container mx-auto px-6 py-24;
   }
 
-  .nav-link {
-    @apply relative text-gray-300 hover:text-white transition-colors duration-200;
+  .section-heading {
+    @apply text-3xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200;
   }
 
-  .nav-link::after {
-    content: '';
-    @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-500 transition-all duration-300;
+  .btn-glow {
+    @apply relative px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300
+           bg-gradient-to-r from-orange-600 to-red-600 
+           hover:shadow-[0_0_20px_rgba(234,88,12,0.5)] hover:-translate-y-1
+           active:scale-95;
   }
 
-  .nav-link:hover::after {
-    @apply w-full;
+  .input-modern {
+    @apply w-full px-5 py-4 bg-slate-900/50 rounded-xl border border-slate-800 
+           text-slate-200 placeholder-slate-500 transition-all duration-300
+           focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20
+           hover:border-slate-700;
   }
+}
 
-  .btn-primary {
-    @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold 
-           hover:bg-blue-700 transition-colors duration-200 
-           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-500;
   }
   
-  .btn-secondary {
-    @apply px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-lg font-semibold 
-           hover:bg-blue-500 hover:text-white transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
+}
 
-  .card {
-    @apply bg-slate-800/50 rounded-xl p-6 hover:bg-slate-800 transition-colors duration-200
-           border border-slate-700/50 hover:border-slate-600
-           backdrop-blur-sm;
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-  .input-field {
-    @apply w-full px-4 py-3 bg-slate-800/50 rounded-lg border border-slate-700
-           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-           text-white placeholder-gray-400;
-  }
-  
-  .scrollbar-thin {
-    scrollbar-width: thin;
-  }
-  
-  /* New custom scrollbar class */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(59, 130, 246, 0.3) rgba(30, 41, 59, 0.5);
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(30, 41, 59, 0.5);
-    border-radius: 10px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(59, 130, 246, 0.3);
-    border-radius: 10px;
-    border: 2px solid transparent;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(59, 130, 246, 0.5);
-  }
-  
-  /* Custom scrollbar styling */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
   }
@@ -149,7 +113,7 @@
   .animation-delay-500 {
     animation-delay: 0.5s;
   }
-}
+
 
 @keyframes float {
   0%, 100% {
@@ -196,7 +160,7 @@
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-slate-400 to-orange-500 bg-clip-text text-transparent;
 }
 
 /* Table grid background pattern using Tailwind slate colors */
@@ -228,4 +192,12 @@
     rgba(8, 13, 28, 0.8) 95%,
     rgb(8, 13, 28) 100%
   );
+}
+
+.orbitron_font{
+  font-family: monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height:normal;
+  
 }
