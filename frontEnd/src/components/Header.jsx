@@ -6,7 +6,7 @@ import Icon from "./Icon.jsx";
 const phrases = [
   "Web Applications",
   "RESTful APIs",
-  "Real-time Chat Systems",
+  "Real-time Chat Application",
   "Interactive Dashboards",
   "E-commerce Platforms",
   "Progressive Web Apps",
@@ -14,7 +14,7 @@ const phrases = [
   "Authentication Workflows",
   // "Serverless Functions",
   // "Microservices",
-  // "Cloud Deployments",
+  "Cloud Deployments",
   "Database Schemas",
   "CI/CD Pipelines",
   "Performance Monitoring",
@@ -82,6 +82,91 @@ const Header = () => {
     };
   }, []);
 
+  const renderTitle = () => {
+    if (!titleHighlight) return title;
+    
+    let highlights = Array.isArray(titleHighlight) ? titleHighlight : [titleHighlight];
+    const gradients = [
+      "from-purple-400 to-pink-500",
+      "from-blue-400 to-cyan-500",
+      "from-emerald-400 to-green-500",
+      "from-orange-400 to-red-500",
+    ];
+
+    // Find all matches
+    const matches = [];
+    const unusedHighlights = [];
+    
+    highlights.forEach((highlight, index) => {
+      const gradient = gradients[index % gradients.length];
+      // Escape regex special chars
+      const escapedHighlight = highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(escapedHighlight, 'g');
+      
+      let match;
+      let found = false;
+      while ((match = regex.exec(title)) !== null) {
+        matches.push({
+          start: match.index,
+          end: match.index + highlight.length,
+          text: highlight,
+          gradient: gradient
+        });
+        found = true;
+      }
+      if (!found) {
+        unusedHighlights.push({ text: highlight, gradient });
+      }
+    });
+
+    // Sort and filter overlaps
+    matches.sort((a, b) => a.start - b.start);
+    const uniqueMatches = [];
+    let lastEnd = 0;
+    matches.forEach(m => {
+      if (m.start >= lastEnd) {
+        uniqueMatches.push(m);
+        lastEnd = m.end;
+      }
+    });
+
+    // Build result
+    const result = [];
+    let currentPos = 0;
+    uniqueMatches.forEach((m, i) => {
+      if (m.start > currentPos) {
+        result.push(<span key={`text-${i}`}>{title.substring(currentPos, m.start)}</span>);
+      }
+      result.push(
+        <span key={`match-${i}`} className={`text-transparent leading-normal bg-clip-text bg-gradient-to-r ${m.gradient} inline-block`}>
+          {m.text}
+        </span>
+      );
+      currentPos = m.end;
+    });
+    if (currentPos < title.length) {
+      result.push(<span key="text-end">{title.substring(currentPos)}</span>);
+    }
+
+    return (
+      <>
+        {result}
+        {unusedHighlights.length > 0 && (
+          <span className="block mt-2">
+            {unusedHighlights.map((h, i) => (
+              <span 
+                key={`unused-${i}`} 
+                className={`text-transparent bg-clip-text bg-gradient-to-r ${h.gradient} mr-3 inline-block`}
+              >
+                {h.text}
+              </span>
+            ))}
+          </span>
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <Navbar />
@@ -109,11 +194,11 @@ const Header = () => {
               <span className="text-xs font-medium text-slate-300">Available for new projects</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              {title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">{titleHighlight}</span>
+            <h1 className="text-sm md:text-5xl font-bold text-white mb-6 tracking-tight leading-normal animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              {renderTitle()}
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <p className="text-xs md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
               {subtitle}
             </p>
 
