@@ -77,11 +77,11 @@ export const skills = [
 
 export const headerData = {
   // title: "Transforming Ideas Into Digital Reality",
-  title: "Designing, developing, and deploying real solutions BACK TO FRONT.",
+  title: "Designing, Developing and Deploying real solutions ",
   subtitle:
     "I write clean, maintainable code from database to browser. Whether it's a small internal tool or a customer-facing product, I care about making every click and request feel fast and  reliable.",
   // titleHighlight: "Digital Reality",
-  titleHighlight: "BACK TO FRONT.",
+  titleHighlight: ["Designing","Developing","Deploying","BACK TO FRONT."],
   socialLinks: socialLinksData,
 };
 
