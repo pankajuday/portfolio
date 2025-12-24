@@ -10,7 +10,7 @@ let redis = null;
 async function getRedis() {
   if (!redis) {
     redis = createClient({
-      url: process.env.REDIS_URL
+      url: process.env.KV_REST_API_REDIS_URL
     });
     redis.on("error", (err) => console.error("Redis error:", err));
     await redis.connect();
