@@ -1,21 +1,36 @@
-import { kv } from "@vercel/kv";
+import { createClient } from "redis";
 
 // Rate limit configuration
 const RATE_LIMIT_WINDOW = 60; 
 const MAX_REQUESTS = 3; // Max 3 requests per min per IP
 
+// Redis client (lazy connection)
+let redis = null;
+
+async function getRedis() {
+  if (!redis) {
+    redis = createClient({
+      url: process.env.REDIS_URL
+    });
+    redis.on("error", (err) => console.error("Redis error:", err));
+    await redis.connect();
+  }
+  return redis;
+}
+
 /**
- * Check if IP is rate limited using Vercel KV
+ * Check if IP is rate limited using Redis
  */
 async function checkRateLimit(ip) {
   const key = `ratelimit:contact:${ip}`;
   
   try {
-    const count = await kv.incr(key);
+    const client = await getRedis();
+    const count = await client.incr(key);
     
     // Set expiry on first request
     if (count === 1) {
-      await kv.expire(key, RATE_LIMIT_WINDOW);
+      await client.expire(key, RATE_LIMIT_WINDOW);
     }
     
     return {
@@ -25,7 +40,7 @@ async function checkRateLimit(ip) {
     };
   } catch (err) {
     console.error("Rate limit error:", err);
-    // If KV fails, allow request (fail open)
+    // If Redis fails, allow request (fail open)
     return { limited: false, remaining: MAX_REQUESTS, reset: RATE_LIMIT_WINDOW };
   }
 }
