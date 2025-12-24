@@ -123,7 +123,7 @@ const About = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Image Column */}
-          <div className="lg:col-span-5 relative group">
+          <div className="lg:col-span-4 relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
             <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
               <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
