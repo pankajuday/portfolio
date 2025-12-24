@@ -3,12 +3,14 @@ import "../index.css";
 import axios from "axios";
 import { mail } from "../data/data";
 
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     subject: "",
     message: "",
+    company: "" 
   });
   
   const [formStatus, setFormStatus] = useState({
@@ -80,10 +82,13 @@ const Contact = () => {
     setFormStatus({ ...formStatus, isSubmitting: true });
     
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_PROXY}/api/client/send-message`,
-        formData
-      );
+      const response = await axios.post("/api/contact", {
+        name: formData.fullName,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        company: formData.company  // honeypot field
+      });
       
       if (response.status === 200) {
         setFormStatus({
@@ -92,7 +97,7 @@ const Contact = () => {
           isError: false,
           errorMessage: "",
         });
-        setFormData({ email: "", fullName: "", subject: "", message: "" });
+        setFormData({ email: "", fullName: "", subject: "", message: "", company: "" });
         
         // Reset success message after 5 seconds
         setTimeout(() => {

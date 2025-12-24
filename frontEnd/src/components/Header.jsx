@@ -99,9 +99,9 @@ const Header = () => {
     
     highlights.forEach((highlight, index) => {
       const gradient = gradients[index % gradients.length];
-      // Escape regex special chars
+      // Escape regex special chars and match whole words case-insensitively
       const escapedHighlight = highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(escapedHighlight, 'g');
+      const regex = new RegExp(`\\b${escapedHighlight}\\b`, 'gi');
       
       let match;
       let found = false;
@@ -138,7 +138,7 @@ const Header = () => {
         result.push(<span key={`text-${i}`}>{title.substring(currentPos, m.start)}</span>);
       }
       result.push(
-        <span key={`match-${i}`} className={`text-transparent leading-normal bg-clip-text bg-gradient-to-r ${m.gradient} inline-block`}>
+        <span key={`match-${i}`} className={`text-transparent bg-clip-text bg-gradient-to-r leading-normal ${m.gradient}`}>
           {m.text}
         </span>
       );
