@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../index.css";
 import axios from "axios";
-import { mail } from "../data/data";
 
 
 const Contact = () => {
@@ -149,7 +148,7 @@ const Contact = () => {
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800/50 flex items-center justify-center group-hover:bg-orange-500/10 transition-colors duration-300">
+                    {/* <div className="w-12 h-12 rounded-xl bg-slate-800/50 flex items-center justify-center group-hover:bg-orange-500/10 transition-colors duration-300">
                       <svg className="w-6 h-6 text-slate-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -157,7 +156,7 @@ const Contact = () => {
                     <div>
                       <h4 className="text-white font-medium mb-1">Email</h4>
                       <a href={`mailto:{mail}`} className="text-slate-400 hover:text-orange-400 transition-colors">{mail}</a>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="flex items-start gap-4 group">
