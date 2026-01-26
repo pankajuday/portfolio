@@ -36,7 +36,7 @@ const socialLinksData = [
   },
 ];
 
-export const mail = "contact@pankajuday.tech";
+export const mail = "pankajuday7033@gmail.com";
 
 export const project = [
   {

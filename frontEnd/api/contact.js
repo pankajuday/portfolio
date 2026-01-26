@@ -156,7 +156,7 @@ export default async function handler(req, res) {
             { name: "📋 Subject", value: safeSubject },
             { name: "💬 Message", value: safeMessage }
           ],
-          footer: { text: `From: ${clientIP.substring(0, 8)}***` },
+          footer: { text: `From: ${clientIP}` },
           timestamp: new Date().toISOString()
         }]
       })
